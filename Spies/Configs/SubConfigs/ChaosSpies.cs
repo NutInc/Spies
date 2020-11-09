@@ -6,6 +6,8 @@ namespace Spies.Configs.SubConfigs
     
     public class ChaosSpies
     {
+        [Description("Percent chance a spy will spawn in a given respawn wave.")]
+        public int SpawnChance { get; private set; } = 40;
         [Description("Broadcast played to the spy when they spawn.")]
         public Broadcast SpawningBroadcast { get; private set; } = new Broadcast("You are a <color=green>Chaos Spy!</color>\\nPress [`] for more info.", 10);
         [Description("Message to send to the spys console when they spawn.")]
@@ -17,6 +19,19 @@ namespace Spies.Configs.SubConfigs
         [Description("Broadcast played when a ClassD or ChaosInsurgency attacks the spy.")]
         public Broadcast SameTeamBroadcast { get; private set; } = new Broadcast("You have attacked a spy of your own faction!", 2);
         [Description("Inventory the spy will spawn with. Leave empty for the default inventory.")]
-        public List<ItemType> Inventory { get; private set; } = new List<ItemType>();
+        public Dictionary<RoleType, List<ItemType>> Inventory { get; private set; } = new Dictionary<RoleType, List<ItemType>>
+        {
+            { 
+                RoleType.NtfCadet, new List<ItemType>
+                {
+                    ItemType.GunProject90,
+                    ItemType.KeycardNTFLieutenant,
+                    ItemType.GrenadeFrag,
+                    ItemType.GrenadeFlash,
+                    ItemType.Disarmer,
+                    ItemType.WeaponManagerTablet
+                }
+            }
+        };
     }
 }

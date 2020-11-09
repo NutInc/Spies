@@ -6,6 +6,8 @@ namespace Spies.Configs.SubConfigs
     
     public class MtfSpies
     {
+        [Description("Percent chance a spy will spawn in a given respawn wave.")]
+        public int SpawnChance { get; private set; } = 40;
         [Description("Broadcast played to the spy when they spawn.")]
         public Broadcast SpawningBroadcast { get; private set; } = new Broadcast("You are an <color=blue>MTF Spy!</color>\\nPress [`] for more info.", 10);
         [Description("Message to send to the spys console when they spawn.")]
