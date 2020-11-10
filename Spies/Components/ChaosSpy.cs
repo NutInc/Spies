@@ -15,7 +15,7 @@ namespace Spies.Components
         private Player _player;
         public Team disguisedTeam = Team.RIP;
         private RoleType _disguisedRoleType;
-        
+
         private void Start()
         {
             _player = Player.Get(gameObject);
@@ -26,26 +26,27 @@ namespace Spies.Components
         private IEnumerator<float> InitSpy()
         {
             yield return Timing.WaitUntilFalse(() => disguisedTeam == Team.RIP);
-            
-            _player.Broadcast(Instance.Config.ChaosSpies.SpawningBroadcast.Duration, Instance.Config.ChaosSpies.SpawningBroadcast.Content);
+
+            _player.Broadcast(Instance.Config.ChaosSpies.SpawningBroadcast.Duration,
+                Instance.Config.ChaosSpies.SpawningBroadcast.Content);
             _player.SendConsoleMessage(Instance.Config.ChaosSpies.SpawningConsoleInfo, "yellow");
-            
+
             _disguisedRoleType = _player.Role;
             _player.IsFriendlyFireEnabled = true;
-            
-            if (!Instance.Config.MtfSpies.Inventory.Any())
+
+            if (!Instance.Config.ChaosSpies.Inventory.Any())
                 yield break;
-            
+
             if (Instance.Config.ChaosSpies.Inventory.TryGetValue(_disguisedRoleType, out List<ItemType> items))
                 _player.ResetInventory(items);
         }
-        
+
         private void Update()
         {
             if (_player == null || _player.Role != _disguisedRoleType)
                 Destroy(false);
         }
-        
+
         public void OnHurting(HurtingEventArgs ev)
         {
             if (ev.Attacker == ev.Target)
@@ -55,8 +56,9 @@ namespace Spies.Components
             {
                 if (Instance.Config.PreventSpyFf)
                     ev.Amount = 0;
-                    
-                ev.Attacker.Broadcast(Instance.Config.ChaosSpies.SameTeamBroadcast.Duration, Instance.Config.ChaosSpies.SameTeamBroadcast.Content);
+
+                ev.Attacker.Broadcast(Instance.Config.ChaosSpies.SameTeamBroadcast.Duration,
+                    Instance.Config.ChaosSpies.SameTeamBroadcast.Content);
                 return;
             }
 
@@ -65,13 +67,16 @@ namespace Spies.Components
 
             Destroy();
         }
-        
+
         public void Destroy(bool reveal = true)
         {
             if (reveal)
             {
+                var curItem = _player.CurrentItem;
                 _player.SetRole(Instance.Config.ChaosSpies.HiddenRole, true);
-                _player.Broadcast(Instance.Config.ChaosSpies.RevealBroadcast.Duration, Instance.Config.ChaosSpies.RevealBroadcast.Content);
+                _player.Broadcast(Instance.Config.ChaosSpies.RevealBroadcast.Duration,
+                    Instance.Config.ChaosSpies.RevealBroadcast.Content);
+                Timing.CallDelayed(0.275f, () => { _player.CurrentItem = curItem; });
             }
 
             _player.IsFriendlyFireEnabled = false;

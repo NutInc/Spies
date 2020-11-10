@@ -11,7 +11,7 @@ namespace Spies.Handlers
     {
         public bool MtfExterminated;
         public bool ChaosExterminated;
-        
+
         public void OnDied(DiedEventArgs _)
         {
             Timing.CallDelayed(0.1f, () =>
