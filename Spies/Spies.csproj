@@ -10,7 +10,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="EXILED" Version="2.9.4-beta" />
+      <PackageReference Include="EXILED" Version="4.2.3" />
       <PackageReference Include="Lib.Harmony" Version="2.0.4" />
     </ItemGroup>
 

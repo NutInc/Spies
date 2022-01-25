@@ -42,7 +42,7 @@ namespace Spies
         /// <inheritdoc cref="Exiled.Events.Handlers.Player.OnShot(ShotEventArgs)"/>
         public static void OnShot(ShotEventArgs ev)
         {
-            if (!Plugin.Instance.Config.RevealAfterShot || !(Player.Get(ev.Target) is { } target))
+            if (!Plugin.Instance.Config.RevealAfterShot || !(ev.Target is { } target))
                 return;
 
             if (ev.Shooter.IsSpy(out Spy spy) && target.Side == spy.SpawnedRole.GetSide())

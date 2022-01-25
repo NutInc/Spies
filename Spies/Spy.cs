@@ -1,3 +1,5 @@
+using Exiled.API.Enums;
+
 namespace Spies
 {
 #pragma warning disable SA1101
@@ -65,7 +67,7 @@ namespace Spies
         /// <param name="player">The player to spawn.</param>
         public void Spawn(Player player)
         {
-            player.SetRole(DisguiseRole, true);
+            player.SetRole(DisguiseRole,SpawnReason.None, true);
             player.ChangeAppearance(SpawnedRole);
 
             player.Broadcast(SpawnMessage);

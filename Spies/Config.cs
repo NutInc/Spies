@@ -38,8 +38,8 @@ namespace Spies
             new Spy
             {
                 Name = "NtfSpy",
-                SpawnedRole = RoleType.ChaosInsurgency,
-                DisguiseRole = RoleType.NtfLieutenant,
+                SpawnedRole = RoleType.ChaosMarauder,
+                DisguiseRole = RoleType.NtfSergeant,
                 SpawnMessage = new Broadcast("You have spawned as a <color=blue>NTF Spy!</color>\n<size=20>Other people view you as a Chaos Insurgent, assassinate your so-called teammates!</size>"),
                 Inventory = new List<ItemType>
                 {
@@ -52,18 +52,16 @@ namespace Spies
             new Spy
             {
                 Name = "CiSpy",
-                SpawnedRole = RoleType.NtfLieutenant,
-                DisguiseRole = RoleType.ChaosInsurgency,
+                SpawnedRole = RoleType.NtfSergeant,
+                DisguiseRole = RoleType.ChaosMarauder,
                 SpawnMessage = new Broadcast("You have spawned as a <color=green>Chaos Insurgent Spy!</color>\n<size=20>Other people view you as a Lieutenant, assassinate your so-called teammates!</size>"),
                 Inventory = new List<ItemType>
                 {
                     ItemType.KeycardNTFLieutenant,
                     ItemType.GunE11SR,
-                    ItemType.WeaponManagerTablet,
-                    ItemType.GrenadeFrag,
+                    ItemType.GrenadeHE,
                     ItemType.Radio,
-                    ItemType.Disarmer,
-                    ItemType.Medkit,
+                    ItemType.Medkit
                 },
             },
         };
