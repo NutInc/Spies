@@ -1,9 +1,10 @@
+using System;
+using System.Linq;
+using Exiled.API.Extensions;
+using Exiled.API.Features;
+
 namespace Spies
 {
-    using System.Linq;
-    using Exiled.API.Extensions;
-    using Exiled.API.Features;
-
     /// <summary>
     /// Various extension methods for aid in handling spies.
     /// </summary>
@@ -17,9 +18,17 @@ namespace Spies
         /// <param name="roleType">The role for the player to be viewed as.</param>
         public static void ChangeAppearance(this Player player, RoleType roleType)
         {
-            foreach (Player target in Player.List.Where(x => x != player && !string.IsNullOrEmpty(x.UserId)))
+            foreach (var target in Player.List.Where(x => x != player && !string.IsNullOrEmpty(x.UserId)))
             {
-                target.SendFakeSyncVar(player.ReferenceHub.networkIdentity, typeof(CharacterClassManager), nameof(CharacterClassManager.NetworkCurClass), (sbyte)roleType);
+                try
+                {
+                    target.SendFakeSyncVar(player.ReferenceHub.networkIdentity, typeof(CharacterClassManager),
+                        nameof(CharacterClassManager.NetworkCurClass), (sbyte) roleType);
+                }
+                catch (Exception ex)
+                {
+                    Log.Warn($"There was an issue sending FakeSyncVar: {ex}");
+                }
             }
         }
 
@@ -43,6 +52,17 @@ namespace Spies
             }
 
             return isSpy && spy != null;
+        }
+
+        public static string GetNewSpyRoleName(Player ply)
+        {
+            // Should probably make this configurable
+            return ply.Team switch
+            {
+                Team.MTF => "Nine-Tailed Fox Spy",
+                Team.CHI => "Chaos Insurgency Spy",
+                _ => "Spy"
+            };
         }
     }
 }

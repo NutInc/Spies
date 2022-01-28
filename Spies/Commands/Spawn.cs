@@ -46,7 +46,7 @@ namespace Spies.Commands
                 return false;
             }
 
-            spy.Spawn(player);
+            spy.SpawnAsSpy(player);
             response = $"Spawned {player.Nickname} as a {spy.Name}.";
             return true;
         }

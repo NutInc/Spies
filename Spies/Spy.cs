@@ -65,10 +65,12 @@ namespace Spies
         /// Spawns the specified player as a spy.
         /// </summary>
         /// <param name="player">The player to spawn.</param>
-        public void Spawn(Player player)
+        public void SpawnAsSpy(Player player)
         {
-            player.SetRole(DisguiseRole,SpawnReason.None, true);
-            player.ChangeAppearance(SpawnedRole);
+            player.SetRole(DisguiseRole, SpawnReason.None, true);
+            
+            // Delay fixes the FakeSyncVar not working
+            Timing.CallDelayed(.1f, () => player.ChangeAppearance(SpawnedRole));
 
             player.Broadcast(SpawnMessage);
 
@@ -76,7 +78,7 @@ namespace Spies
 
             Plugin.SendDebug($"Spawned {player.Nickname} as a {Name}.");
 
-            Timing.CallDelayed(0.5f, () => player.ResetInventory(Inventory));
+            Timing.CallDelayed(.5f, () => player.ResetInventory(Inventory));
         }
 
         /// <inheritdoc/>

@@ -19,6 +19,8 @@ namespace Spies
             if (ev.Player.IsSpy(out Spy spy))
             {
                 ev.Player.SessionVariables.Remove("IsSpy");
+                ev.Player.CustomInfo = string.Empty;
+                ev.Player.ReferenceHub.nicknameSync.ShownPlayerInfo |= PlayerInfoArea.Role;
                 Plugin.SendDebug($"Removed spy tag ({spy.Name}) from {ev.Player.Nickname}.");
                 return;
             }
@@ -35,7 +37,7 @@ namespace Spies
                     return;
 
                 Plugin.SendDebug($"Possible spies to spawn as: {string.Join(", ", possibleSpies.Select(x => x.Name))}");
-                possibleSpies[Random.Range(0, possibleSpies.Count)].Spawn(ev.Player);
+                possibleSpies[Random.Range(0, possibleSpies.Count)].SpawnAsSpy(ev.Player);
             });
         }
 
@@ -47,7 +49,10 @@ namespace Spies
 
             if (ev.Shooter.IsSpy(out Spy spy) && target.Side == spy.SpawnedRole.GetSide())
             {
-                ev.Shooter.ChangeAppearance(spy.SpawnedRole);
+                ev.Shooter.ChangeAppearance(spy.DisguiseRole);
+                ev.Shooter.CustomInfo = Extensions.GetNewSpyRoleName(ev.Shooter);
+                
+                ev.Shooter.ReferenceHub.nicknameSync.ShownPlayerInfo &= ~PlayerInfoArea.Role;
             }
         }
     }
