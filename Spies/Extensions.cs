@@ -56,11 +56,15 @@ namespace Spies
 
         public static string GetNewSpyRoleName(Player ply)
         {
-            // Should probably make this configurable
+            // I feel like theres a better way to do this, oh well.
             return ply.Team switch
             {
-                Team.MTF => "Nine-Tailed Fox Spy",
-                Team.CHI => "Chaos Insurgency Spy",
+                Team.MTF => Plugin.Instance.Config.SpyRoleNames[Team.MTF],
+                Team.CHI => Plugin.Instance.Config.SpyRoleNames[Team.CHI],
+                Team.CDP => Plugin.Instance.Config.SpyRoleNames[Team.CDP],
+                Team.SCP => Plugin.Instance.Config.SpyRoleNames[Team.SCP],
+                Team.RSC => Plugin.Instance.Config.SpyRoleNames[Team.RSC],
+                Team.TUT => Plugin.Instance.Config.SpyRoleNames[Team.TUT],
                 _ => "Spy"
             };
         }

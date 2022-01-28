@@ -28,6 +28,24 @@ namespace Spies
         /// </summary>
         [Description("If a spy should be revealed after they shoot a teammate.")]
         public bool RevealAfterShot { get; set; } = true;
+        
+        [Description("The role names that will be set after a spy has been revealed")]
+        public Dictionary<Team, string> SpyRoleNames { get; set; }
+
+        public Config()
+        {
+            var spyRoles = new Dictionary<Team, string>()
+            {
+                {Team.CDP, "Class-D Spy"},
+                {Team.CHI, "Chaos Insurgency Spy"},
+                {Team.MTF, "Nine-Tailed Fox Spy"},
+                {Team.RSC, "Scientist Spy"},
+                {Team.SCP, "SCP Spy"},
+                {Team.TUT, "Serpents Hand Spy"}
+            };
+
+            SpyRoleNames = spyRoles;
+        }
 
         /// <summary>
         /// Gets or sets the <see cref="List{T}"/> of spies which can spawn.
