@@ -3,10 +3,10 @@
 on:
   push:
     branches:
-      - master
+      - main
   pull_request:
     branches:
-      - master
+      - main
 
 env:
   EXILED_REFERENCES_PATH: ${{ github.workspace }}/Spies/lib
