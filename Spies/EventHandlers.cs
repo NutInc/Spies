@@ -47,7 +47,7 @@ namespace Spies
             if (!Plugin.Instance.Config.RevealAfterShot || !(ev.Target is { } target))
                 return;
 
-            if (ev.Shooter.IsSpy(out Spy spy) && target.Side == spy.SpawnedRole.GetSide())
+            if (ev.Shooter.IsSpy(out var spy) && target.Role.Side == spy.SpawnedRole.GetSide())
             {
                 ev.Shooter.ChangeAppearance(spy.DisguiseRole);
                 ev.Shooter.CustomInfo = Extensions.GetNewSpyRoleName(ev.Shooter);

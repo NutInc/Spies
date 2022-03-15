@@ -57,8 +57,9 @@ namespace Spies
         public static string GetNewSpyRoleName(Player ply)
         {
             // I feel like theres a better way to do this, oh well.
-            return ply.Team switch
+            return ply.Role.Team switch
             {
+                
                 Team.MTF => Plugin.Instance.Config.SpyRoleNames[Team.MTF],
                 Team.CHI => Plugin.Instance.Config.SpyRoleNames[Team.CHI],
                 Team.CDP => Plugin.Instance.Config.SpyRoleNames[Team.CDP],
