@@ -28,7 +28,13 @@ namespace Spies
         /// </summary>
         [Description("If a spy should be revealed after they shoot a teammate.")]
         public bool RevealAfterShot { get; set; } = true;
-        
+
+        /// <summary>
+        /// Gets or sets a value indicating whether a spy should be revealed after a "teammate" (opposing side) shoots them.
+        /// </summary>
+        [Description("If a spy should be revealed after being shot.")]
+        public bool RevealBeingShot { get; set; } = false;
+
         [Description("The role names that will be set after a spy has been revealed")]
         public Dictionary<Team, string> SpyRoleNames { get; set; }
 
@@ -114,12 +120,11 @@ namespace Spies
                 Name = "ChaosRiflemanSpy",
                 SpawnedRole = RoleType.NtfCaptain,
                 DisguiseRole = RoleType.ChaosRifleman,
-                SpawnMessage = new Broadcast("You have spawned as a <color=green>Chaos Insurgent Spy!</color>\n<size=20>Other people view you as a Lieutenant, assassinate your so-called teammates!</size>"),
+                SpawnMessage = new Broadcast("You have spawned as a <color=green>Chaos Insurgent Spy!</color>\n<size=20>Other people view you as a Sergeant, assassinate your so-called teammates!</size>"),
                 Inventory = new List<ItemType>
                 {
                     ItemType.KeycardNTFLieutenant,
                     ItemType.GunE11SR,
-                    ItemType.GrenadeHE,
                     ItemType.Radio,
                     ItemType.Medkit
                 },
@@ -129,12 +134,11 @@ namespace Spies
                 Name = "ChaosMarauderSpy",
                 SpawnedRole = RoleType.NtfSergeant,
                 DisguiseRole = RoleType.ChaosMarauder,
-                SpawnMessage = new Broadcast("You have spawned as a <color=green>Chaos Insurgent Spy!</color>\n<size=20>Other people view you as a Lieutenant, assassinate your so-called teammates!</size>"),
+                SpawnMessage = new Broadcast("You have spawned as a <color=green>Chaos Insurgent Spy!</color>\n<size=20>Other people view you as a Sergeant, assassinate your so-called teammates!</size>"),
                 Inventory = new List<ItemType>
                 {
                     ItemType.KeycardNTFLieutenant,
                     ItemType.GunE11SR,
-                    ItemType.GrenadeHE,
                     ItemType.Radio,
                     ItemType.Medkit
                 },
@@ -144,12 +148,11 @@ namespace Spies
                 Name = "ChaosRepressorSpy",
                 SpawnedRole = RoleType.NtfSpecialist,
                 DisguiseRole = RoleType.ChaosRepressor,
-                SpawnMessage = new Broadcast("You have spawned as a <color=green>Chaos Insurgent Spy!</color>\n<size=20>Other people view you as a Lieutenant, assassinate your so-called teammates!</size>"),
+                SpawnMessage = new Broadcast("You have spawned as a <color=green>Chaos Insurgent Spy!</color>\n<size=20>Other people view you as a Sergeant, assassinate your so-called teammates!</size>"),
                 Inventory = new List<ItemType>
                 {
                     ItemType.KeycardNTFLieutenant,
                     ItemType.GunE11SR,
-                    ItemType.GrenadeHE,
                     ItemType.Radio,
                     ItemType.Medkit
                 },
@@ -159,12 +162,11 @@ namespace Spies
                 Name = "ChaosConscriptSpy",
                 SpawnedRole = RoleType.NtfPrivate,
                 DisguiseRole = RoleType.ChaosConscript,
-                SpawnMessage = new Broadcast("You have spawned as a <color=green>Chaos Insurgent Spy!</color>\n<size=20>Other people view you as a Lieutenant, assassinate your so-called teammates!</size>"),
+                SpawnMessage = new Broadcast("You have spawned as a <color=green>Chaos Insurgent Spy!</color>\n<size=20>Other people view you as a Sergeant, assassinate your so-called teammates!</size>"),
                 Inventory = new List<ItemType>
                 {
                     ItemType.KeycardNTFLieutenant,
                     ItemType.GunE11SR,
-                    ItemType.GrenadeHE,
                     ItemType.Radio,
                     ItemType.Medkit
                 },

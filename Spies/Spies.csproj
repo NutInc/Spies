@@ -10,17 +10,36 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="EXILED" Version="5.0.0-beta.5" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Reference Include="Assembly-CSharp" HintPath="$(EXILED_References)\Assembly-CSharp-Publicized.dll" Private="false" />
-      <Reference Include="Assembly-CSharp-firstpass" HintPath="$(EXILED_References)\Assembly-CSharp-firstpass.dll" Private="false" />
-      <Reference Include="CommandSystem.Core" HintPath="$(EXILED_References)\CommandSystem.Core.dll" Private="false" />
-      <Reference Include="Mirror" HintPath="$(EXILED_References)\Mirror.dll" Private="false" />
-      <Reference Include="NorthwoodLib" HintPath="$(EXILED_References)\NorthwoodLib.dll" Private="false" />
-      <Reference Include="UnityEngine.CoreModule" HintPath="$(EXILED_References)\UnityEngine.CoreModule.dll" Private="false" />
-      <Reference Include="UnityEngine.PhysicsModule" HintPath="$(EXILED_References)\UnityEngine.PhysicsModule.dll" Private="false" />
+      <Reference Include="Assembly-CSharp">
+        <HintPath>..\..\EXILED References\EXILED 5\Assembly-CSharp.dll</HintPath>
+      </Reference>
+      <Reference Include="Assembly-CSharp-firstpass">
+        <HintPath>..\..\EXILED References\Internal\11.2\Assembly-CSharp-firstpass.dll</HintPath>
+      </Reference>
+      <Reference Include="CommandSystem.Core">
+        <HintPath>..\..\EXILED References\Internal\11.2\CommandSystem.Core.dll</HintPath>
+      </Reference>
+      <Reference Include="Exiled.API">
+        <HintPath>..\..\EXILED References\EXILED 5\EXILED\Plugins\dependencies\Exiled.API.dll</HintPath>
+      </Reference>
+      <Reference Include="Exiled.Events">
+        <HintPath>..\..\EXILED References\EXILED 5\EXILED\Plugins\Exiled.Events.dll</HintPath>
+      </Reference>
+      <Reference Include="Exiled.Permissions">
+        <HintPath>..\..\EXILED References\EXILED 5\EXILED\Plugins\Exiled.Permissions.dll</HintPath>
+      </Reference>
+      <Reference Include="Mirror">
+        <HintPath>..\..\EXILED References\Internal\11.2\Mirror.dll</HintPath>
+      </Reference>
+      <Reference Include="NorthwoodLib">
+        <HintPath>..\..\EXILED References\Internal\11.2\NorthwoodLib.dll</HintPath>
+      </Reference>
+      <Reference Include="UnityEngine.CoreModule">
+        <HintPath>..\..\EXILED References\Internal\11.2\UnityEngine.CoreModule.dll</HintPath>
+      </Reference>
+      <Reference Include="UnityEngine.PhysicsModule">
+        <HintPath>..\..\EXILED References\Internal\11.2\UnityEngine.PhysicsModule.dll</HintPath>
+      </Reference>
     </ItemGroup>
 
 </Project>

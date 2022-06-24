@@ -44,6 +44,11 @@ namespace Spies
         public List<ItemType> Inventory { get; set; }
 
         /// <summary>
+        /// Returns if the spy has been revealed
+        /// </summary>
+        public bool Revealed { get; set; } = false;
+
+        /// <summary>
         /// Attempts to get a <see cref="Spy"/> by its name.
         /// </summary>
         /// <param name="name">The name of the <see cref="Spy"/>.</param>
