@@ -2,6 +2,7 @@ namespace Spies
 {
     using System.Collections.Generic;
     using System.Linq;
+    using Exiled.API.Enums;
     using Exiled.API.Features;
     using Exiled.API.Extensions;
     using Exiled.Events.EventArgs;
@@ -19,6 +20,8 @@ namespace Spies
         public static void OnChangingRole(ChangingRoleEventArgs ev)
         {
             var player = ev.Player;
+
+            if (ev.Reason == SpawnReason.Escaped) return;
 
             if (player.IsSpy(out Spy spy))
             {
