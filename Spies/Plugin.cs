@@ -27,7 +27,7 @@
         public override Version RequiredExiledVersion { get; } = new Version(5, 0, 0);
 
         /// <inheritdoc/>
-        public override Version Version { get; } = new Version(2, 2, 0);
+        public override Version Version { get; } = new Version(2, 3, 2);
 
         /// <summary>
         /// Sends a debug message if <see cref="Config.ShowDebug"/> is enabled.

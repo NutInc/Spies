@@ -56,9 +56,6 @@ namespace Spies
 
             if (!(ev.Target is { } target))
                 return;
-            
-            Log.Info(shooter.Nickname);
-            Log.Info(target.Nickname);
 
             if (shooter.IsSpy(out var shooterSpy) && target.Role.Side == shooterSpy.SpawnedRole.GetSide() && _config.RevealAfterShot)
             {
@@ -67,10 +64,6 @@ namespace Spies
             }
 
             if (!target.IsSpy(out var targetSpy)) return;
-
-            Log.Info(targetSpy.DisguiseRole.GetSide().ToString());
-            Log.Info(target.Role.Side.ToString());
-
             if (shooter.Role.Side == targetSpy.SpawnedRole.GetSide() && _config.RevealBeingShot)
             {
                 RevealSpy(target, targetSpy);
