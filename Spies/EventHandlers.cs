@@ -51,7 +51,7 @@ namespace Spies
         /// <inheritdoc cref="Exiled.Events.Handlers.Player.OnShot(ShotEventArgs)"/>
         public static void OnShot(ShotEventArgs ev)
         {
-            
+
             var shooter = ev.Shooter;
 
             if (!(ev.Target is { } target))
@@ -61,9 +61,17 @@ namespace Spies
             {
                 RevealSpy(shooter, shooterSpy);
                 ev.CanHurt = true;
+                return;
             }
 
+            if (Plugin.Instance.spawnProtectedSpies.Contains(target))
+            {
+                ev.CanHurt = false;
+                return;
+            };
+
             if (!target.IsSpy(out var targetSpy)) return;
+
             if (shooter.Role.Side == targetSpy.SpawnedRole.GetSide() && _config.RevealBeingShot)
             {
                 RevealSpy(target, targetSpy);
@@ -80,6 +88,8 @@ namespace Spies
         {
             shooter.ChangeAppearance(spy.DisguiseRole);
             shooter.CustomInfo = Extensions.GetNewSpyRoleName(shooter);
+
+            Plugin.Instance.spawnProtectedSpies.Remove(shooter);
 
             shooter.ReferenceHub.nicknameSync.ShownPlayerInfo &= ~PlayerInfoArea.Role;
             spy.Revealed = true;

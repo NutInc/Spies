@@ -73,7 +73,10 @@ namespace Spies
         public void SpawnAsSpy(Player player)
         {
             player.SetRole(DisguiseRole, SpawnReason.None, true);
-            
+
+            Plugin.Instance.spawnProtectedSpies.Add(player);
+            Timing.CallDelayed(10f, () => Plugin.Instance.spawnProtectedSpies.Remove(player));
+
             // Delay fixes the FakeSyncVar not working
             Timing.CallDelayed(.1f, () => player.ChangeAppearance(SpawnedRole));
 

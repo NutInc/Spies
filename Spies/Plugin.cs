@@ -1,6 +1,7 @@
 ﻿namespace Spies
 {
     using System;
+    using System.Collections.Generic;
     using Exiled.API.Features;
     using PlayerHandlers = Exiled.Events.Handlers.Player;
 
@@ -35,6 +36,7 @@
         /// <param name="message">The debug message to be sent.</param>
         public static void SendDebug(object message) => Log.Debug(message, Instance.Config.ShowDebug);
 
+        public List<Player> spawnProtectedSpies = new List<Player>();
         /// <inheritdoc/>
         public override void OnEnabled()
         {
